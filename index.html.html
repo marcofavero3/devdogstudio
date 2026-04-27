@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dev Dog Studio — Desenvolvimento Web & Automações para Negócios</title>
+  <meta name="description" content="Criamos sites, sistemas e automações que trabalham por você. Design premium, código limpo e resultados reais para empresas que levam o digital a sério." />
+  <meta name="keywords" content="desenvolvimento web, criação de sites, automações, micro SaaS, sistemas web, landing page, integrações, agência digital, dev dog studio" />
+  <meta name="author" content="Dev Dog Studio" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://devdogstudio.com.br/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devdogstudio.com.br/" />
+  <meta property="og:title" content="Dev Dog Studio — Desenvolvimento Web & Automações" />
+  <meta property="og:description" content="Sites, sistemas e automações que trabalham por você. Design premium e código limpo." />
+  <meta property="og:image" content="https://devdogstudio.com.br/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dev Dog Studio" />
+  <meta name="twitter:description" content="Sites, sistemas e automações que trabalham por você." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Dev Dog Studio",
+    "url": "https://devdogstudio.com.br",
+    "email": "contato@devdogstudio.com.br",
+    "description": "Estúdio de desenvolvimento web especializado em sites, sistemas, micro SaaS e automações para empresas.",
+    "areaServed": "BR",
+    "serviceType": ["Web Development", "Software Development", "Business Automation"],
+    "inLanguage": "pt-BR",
+    "foundingDate": "2025"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080808;
+      --dark:    #101010;
+      --mid:     #181818;
+      --border:  #242424;
+      --muted:   #3a3a3a;
+      --subtle:  #606060;
+      --light:   #909090;
+      --silver:  #c0c0c0;
+      --white:   #f0f0f0;
+      --pure:    #ffffff;
+
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Geist', system-ui, sans-serif;
+      --mono:  'Geist Mono', 'Courier New', monospace;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+      --nav-h: 68px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    @media (max-width: 768px) { body { cursor: auto; } }
+
+    /* ── GRAIN ──────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 180px;
+      pointer-events: none;
+      z-index: 9000;
+      opacity: 0.5;
+    }
+
+    /* ── CURSOR (desktop only) ──────────────── */
+    #cur  { position: fixed; width: 7px; height: 7px; background: var(--pure); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; transition: width .3s var(--ease-out), height .3s var(--ease-out); }
+    #cur-r{ position: fixed; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: width .4s var(--ease-out), height .4s var(--ease-out), opacity .3s; }
+    body:has(a:hover) #cur, body:has(button:hover) #cur { width: 18px; height: 18px; }
+    body:has(a:hover) #cur-r, body:has(button:hover) #cur-r { width: 52px; height: 52px; opacity: .4; }
+    @media (max-width: 768px) { #cur, #cur-r { display: none; } }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+      height: var(--nav-h);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, border-color .4s, backdrop-filter .4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      z-index: 810;
+      position: relative;
+    }
+    .nav-logo-dot { width: 6px; height: 6px; background: var(--white); border-radius: 50%; }
+    .nav-desktop { display: flex; align-items: center; gap: 48px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--subtle); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--black); background: var(--white); border: none;
+      padding: 10px 20px; cursor: none; text-decoration: none;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--silver); }
+
+    /* hamburger */
+    .nav-burger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; z-index: 810; position: relative;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 1px; background: var(--white);
+      transition: transform .4s var(--ease-out), opacity .3s, width .3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* mobile menu */
+    .nav-mobile {
+      position: fixed; inset: 0; background: var(--black); z-index: 790;
+      display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0;
+      transform: translateX(100%);
+      transition: transform .5s var(--ease-out);
+    }
+    .nav-mobile.open { transform: translateX(0); }
+    .nav-mobile a {
+      font-family: var(--serif); font-size: clamp(32px, 8vw, 52px);
+      color: var(--white); text-decoration: none; letter-spacing: -.01em;
+      padding: 16px 40px; display: block; width: 100%; text-align: center;
+      border-bottom: 1px solid var(--border);
+      transition: color .2s;
+    }
+    .nav-mobile a:first-child { border-top: 1px solid var(--border); }
+    .nav-mobile a:hover { color: var(--silver); }
+    .nav-mobile-cta {
+      margin-top: 32px;
+      font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--white); color: var(--black); text-decoration: none;
+      padding: 16px 48px;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-desktop { display: none; }
+      .nav-burger { display: flex; }
+    }
+
+    /* ── HERO ────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      padding: calc(var(--nav-h) + 80px) 40px 80px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 40%, rgba(255,255,255,.03) 0%, transparent 70%),
+        linear-gradient(180deg, var(--dark) 0%, var(--black) 100%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: .25;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--subtle); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--muted); }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(44px, 7vw, 108px);
+      line-height: 1.0;
+      font-weight: 400;
+      color: var(--pure);
+      margin-bottom: 36px;
+      letter-spacing: -.01em;
+    }
+    .hero-title em { font-style: italic; color: var(--silver); }
+    .hero-sub-row {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-subtitle {
+      font-size: 15px; color: var(--subtle); max-width: 420px; line-height: 1.8;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 24px; flex-shrink: 0; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white); color: var(--black);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none; padding: 14px 28px;
+      transition: background .2s, transform .2s var(--ease-out); cursor: none;
+    }
+    .btn-primary:hover { background: var(--silver); transform: translateY(-2px); }
+    .btn-ghost {
+      font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--subtle); text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: color .2s; cursor: none;
+    }
+    .btn-ghost:hover { color: var(--white); }
+    .btn-ghost svg { transition: transform .2s; }
+    .btn-ghost:hover svg { transform: translateX(4px); }
+    .hero-scroll {
+      position: absolute; right: 40px; bottom: 40px;
+      writing-mode: vertical-rl; text-orientation: mixed;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--muted); display: flex; align-items: center; gap: 16px;
+    }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 48px; background: var(--border); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:.2}50%{opacity:1} }
+
+    @media (max-width: 768px) {
+      .hero { padding: calc(var(--nav-h) + 60px) 24px 60px; min-height: 100svh; justify-content: flex-end; }
+      .hero-title { font-size: clamp(42px, 11vw, 72px); margin-bottom: 28px; }
+      .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 28px; }
+      .hero-subtitle { max-width: 100%; font-size: 14px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; width: 100%; }
+      .btn-primary { width: 100%; justify-content: center; padding: 16px; }
+      .hero-scroll { display: none; }
+    }
+
+    /* ── MARQUEE ─────────────────────────────── */
+    .marquee-section {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      overflow: hidden; padding: 18px 0; background: var(--dark);
+    }
+    .marquee-track { display: flex; animation: marquee 30s linear infinite; white-space: nowrap; }
+    .marquee-item {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); padding: 0 36px; display: inline-flex; align-items: center; gap: 36px;
+    }
+    .marquee-item::after { content: '·'; color: var(--border); }
+    @keyframes marquee { from{transform:translateX(0)}to{transform:translateX(-50%)} }
+
+    /* ── SHARED SECTION STYLES ──────────────── */
+    section { padding: 120px 40px; }
+    @media (max-width: 768px) { section { padding: 80px 24px; } }
+
+    .s-tag {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--subtle); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .s-tag::before { content:''; display:block; width:18px; height:1px; background:var(--muted); }
+    .s-title {
+      font-family: var(--serif); font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.08; font-weight: 400; color: var(--pure);
+    }
+    .s-title em { font-style: italic; color: var(--silver); }
+    .s-head {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      margin-bottom: 80px; align-items: end;
+    }
+    .s-head-desc { font-size: 14px; color: var(--subtle); line-height: 1.8; max-width: 360px; align-self: end; }
+    @media (max-width: 768px) {
+      .s-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+      .s-head-desc { max-width: 100%; }
+    }
+
+    /* ── SERVICES ───────────────────────────── */
+    #servicos { border-top: 1px solid var(--border); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .s-card {
+      background: var(--black); padding: 44px 36px;
+      position: relative; overflow: hidden; cursor: none;
+      transition: background .3s;
+    }
+    .s-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--white); transform: scaleX(0); transform-origin: left;
+      transition: transform .4s var(--ease-out);
+    }
+    .s-card:hover { background: var(--dark); }
+    .s-card:hover::before { transform: scaleX(1); }
+    .s-card-num { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .12em; margin-bottom: 28px; }
+    .s-card-icon { width: 36px; height: 36px; color: var(--light); margin-bottom: 24px; }
+    .s-card-name { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--pure); margin-bottom: 12px; line-height: 1.15; }
+    .s-card-desc { font-size: 13px; color: var(--subtle); line-height: 1.75; margin-bottom: 28px; }
+    .s-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 4px 9px; }
+
+    @media (max-width: 900px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* ── COMMITMENTS (honest social proof) ─── */
+    #compromissos { background: var(--dark); border-top: 1px solid var(--border); }
+    .commit-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .commit-card {
+      background: var(--dark); padding: 44px 36px;
+      position: relative; overflow: hidden;
+    }
+    .commit-card::after {
+      content: attr(data-icon);
+      position: absolute; bottom: -8px; right: 16px;
+      font-size: 80px; line-height: 1; opacity: .06;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+    .commit-num { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .12em; margin-bottom: 20px; }
+    .commit-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--pure); margin-bottom: 12px; line-height: 1.2; }
+    .commit-desc { font-size: 13px; color: var(--subtle); line-height: 1.75; }
+
+    /* stats row below commitments */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border); margin-top: 1px;
+    }
+    .stat-box { background: var(--dark); padding: 32px 36px; }
+    .stat-num { font-family: var(--serif); font-size: 40px; font-weight: 400; color: var(--pure); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--subtle); }
+
+    @media (max-width: 900px) { .commit-grid { grid-template-columns: 1fr 1fr; } .stats-row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .commit-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr 1fr; } }
+
+    /* ── PROCESS ─────────────────────────────── */
+    #processo { border-top: 1px solid var(--border); }
+    .process-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); margin-top: 64px; }
+    .p-step {
+      background: var(--black); display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 40px; padding: 36px 40px;
+      transition: background .25s; cursor: none; overflow: hidden;
+    }
+    .p-step:hover { background: var(--dark); }
+    .p-step-num { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .15em; }
+    .p-step-body h3 { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--pure); margin-bottom: 6px; }
+    .p-step-body p { font-size: 13px; color: var(--subtle); line-height: 1.7; max-width: 540px; }
+    .p-step-arrow { color: var(--muted); transition: transform .3s var(--ease-out), color .3s; }
+    .p-step:hover .p-step-arrow { transform: translateX(6px); color: var(--silver); }
+
+    @media (max-width: 768px) {
+      .p-step { grid-template-columns: 48px 1fr; gap: 20px; padding: 28px 24px; }
+      .p-step-arrow { display: none; }
+    }
+
+    /* ── STACK ───────────────────────────────── */
+    #stack { background: var(--dark); border-top: 1px solid var(--border); }
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border); margin-top: 64px;
+    }
+    .stack-item {
+      background: var(--dark); padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .stack-cat { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+    .stack-name { font-size: 15px; color: var(--white); font-weight: 500; }
+    .stack-sub { font-size: 12px; color: var(--subtle); }
+
+    @media (max-width: 900px) { .stack-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ── PRICING ─────────────────────────────── */
+    #planos { border-top: 1px solid var(--border); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 64px; }
+    .p-card { background: var(--black); padding: 44px 36px; position: relative; transition: background .3s; cursor: none; }
+    .p-card.featured { background: var(--mid); }
+    .p-card.featured::before {
+      content: 'Mais escolhido';
+      position: absolute; top: -1px; left: 36px;
+      font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      background: var(--white); color: var(--black); padding: 4px 12px;
+    }
+    .p-name { font-family: var(--mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--subtle); margin-bottom: 20px; }
+    .p-price { font-family: var(--serif); font-size: 48px; font-weight: 400; color: var(--pure); line-height: 1; margin-bottom: 6px; }
+    .p-price span { font-family: var(--sans); font-size: 15px; color: var(--subtle); }
+    .p-sub { font-size: 13px; color: var(--subtle); margin-bottom: 36px; }
+    .p-feat { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+    .p-feat li { font-size: 13px; color: var(--light); padding-left: 18px; position: relative; }
+    .p-feat li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+    .p-btn {
+      display: block; text-align: center;
+      font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none; padding: 13px;
+      border: 1px solid var(--border); color: var(--light);
+      transition: background .2s, color .2s, border-color .2s; cursor: none;
+    }
+    .p-btn:hover, .p-card.featured .p-btn { background: var(--white); color: var(--black); border-color: var(--white); }
+
+    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 480px; } }
+
+    /* ── MODEL TOGGLE ───────────────────────── */
+    .model-toggle {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); margin-bottom: 1px;
+    }
+    .model-btn {
+      background: var(--dark); padding: 28px 36px;
+      cursor: none; transition: background .3s;
+      border: none; text-align: left;
+      border-top: 2px solid transparent;
+      position: relative;
+    }
+    .model-btn:hover { background: var(--mid); }
+    .model-btn.active {
+      background: var(--mid);
+      border-top-color: var(--white);
+    }
+    .model-btn-tag {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--subtle); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .model-btn-tag::after {
+      content: ''; display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--muted);
+      transition: background .3s;
+    }
+    .model-btn.active .model-btn-tag::after { background: var(--white); }
+    .model-btn-title {
+      font-family: var(--serif); font-size: 20px; color: var(--pure);
+      margin-bottom: 8px; transition: color .3s;
+    }
+    .model-btn-desc { font-size: 13px; color: var(--subtle); line-height: 1.75; }
+
+    /* pricing panels */
+    .pricing-panel { display: none; }
+    .pricing-panel.active { display: grid; }
+    .pricing-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .p-model-tag { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+
+    @media (max-width: 1100px) { .pricing-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px)  { .model-toggle { grid-template-columns: 1fr; } .pricing-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA ─────────────────────────────────── */
+    #contato { border-top: 1px solid var(--border); background: var(--dark); }
+    .cta-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .cta-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 60px); line-height: 1.05; font-weight: 400; color: var(--pure); }
+    .cta-title em { font-style: italic; color: var(--silver); }
+    .cta-right p { font-size: 15px; color: var(--subtle); line-height: 1.8; margin-bottom: 36px; }
+    .cta-btns { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+    .cta-wa {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--white); color: var(--black);
+      font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none; padding: 16px 28px;
+      transition: background .2s, transform .2s var(--ease-out); cursor: none;
+    }
+    .cta-wa:hover { background: var(--silver); transform: translateY(-2px); }
+    .cta-mail { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--subtle); text-decoration: none; transition: color .2s; cursor: none; display: flex; align-items: center; gap: 8px; }
+    .cta-mail:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cta-wa { width: 100%; justify-content: center; }
+    }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer {
+      padding: 48px 40px; border-top: 1px solid var(--border); background: var(--black);
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
+    }
+    .f-brand { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .f-links { display: flex; gap: 28px; list-style: none; }
+    .f-links a { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; cursor: none; }
+    .f-links a:hover { color: var(--subtle); }
+    .f-right { text-align: right; font-size: 11px; color: var(--muted); font-family: var(--mono); letter-spacing: .05em; }
+
+    @media (max-width: 768px) {
+      footer { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; gap: 20px; }
+      .f-links { justify-content: center; flex-wrap: wrap; }
+      .f-right { text-align: center; }
+    }
+
+    /* ── REVEAL ─────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    .rd1 { transition-delay: .08s; } .rd2 { transition-delay: .16s; } .rd3 { transition-delay: .24s; } .rd4 { transition-delay: .32s; }
+
+    .line-mask { overflow: hidden; }
+    .line-mask span { display: block; transform: translateY(105%); transition: transform .9s var(--ease-out); }
+    .line-mask.in span { transform: none; }
+    .lm1 span { transition-delay: .05s; } .lm2 span { transition-delay: .12s; } .lm3 span { transition-delay: .19s; } .lm4 span { transition-delay: .26s; }
+  </style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Navegação principal">
+  <a href="/" class="nav-logo" aria-label="Dev Dog Studio">
+    <span class="nav-logo-dot"></span>Dev Dog Studio
+  </a>
+  <div class="nav-desktop">
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5518996269012?text=Olá,%20gostaria%20de%20conversar%20sobre%20um%20projeto" class="nav-cta" target="_blank" rel="noopener">Falar agora</a>
+  </div>
+  <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="mob-menu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <a href="#servicos" class="mob-link">Serviços</a>
+  <a href="#processo" class="mob-link">Processo</a>
+  <a href="#planos" class="mob-link">Planos</a>
+  <a href="#contato" class="mob-link">Contato</a>
+  <a href="https://wa.me/5518996269012?text=Olá,%20gostaria%20de%20conversar%20sobre%20um%20projeto" class="nav-mobile-cta" target="_blank" rel="noopener">Falar agora →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-label="Apresentação">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Estúdio digital — Brasil, 2025</div>
+    <h1 class="hero-title">
+      <div class="line-mask lm1"><span>Software que</span></div>
+      <div class="line-mask lm2"><span><em>trabalha</em></span></div>
+      <div class="line-mask lm3"><span>enquanto você</span></div>
+      <div class="line-mask lm4"><span>descansa.</span></div>
+    </h1>
+    <div class="hero-sub-row">
+      <p class="hero-subtitle">Sites, sistemas e automações feitos com precisão — para empresas que levam o digital a sério.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5518996269012?text=Quero%20um%20orçamento" class="btn-primary" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Iniciar projeto
+        </a>
+        <a href="#servicos" class="btn-ghost">
+          Ver serviços
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-item">Sites Premium</div><div class="marquee-item">Sistemas Web</div>
+    <div class="marquee-item">Micro SaaS</div><div class="marquee-item">Automações</div>
+    <div class="marquee-item">Integrações API</div><div class="marquee-item">Landing Pages</div>
+    <div class="marquee-item">n8n & Webhooks</div><div class="marquee-item">Java Spring Boot</div>
+    <div class="marquee-item">Angular</div><div class="marquee-item">Sites Premium</div>
+    <div class="marquee-item">Sistemas Web</div><div class="marquee-item">Micro SaaS</div>
+    <div class="marquee-item">Automações</div><div class="marquee-item">Integrações API</div>
+    <div class="marquee-item">Landing Pages</div><div class="marquee-item">n8n & Webhooks</div>
+    <div class="marquee-item">Java Spring Boot</div><div class="marquee-item">Angular</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicos" aria-labelledby="sv-title">
+  <div class="s-head">
+    <div>
+      <div class="s-tag">O que fazemos</div>
+      <h2 class="s-title" id="sv-title">Cada projeto,<br><em>uma solução</em><br>sob medida.</h2>
+    </div>
+    <p class="s-head-desc">Não entregamos templates. Construímos do zero, com foco no seu negócio, nos seus usuários e nos seus resultados.</p>
+  </div>
+  <div class="services-grid">
+    <article class="s-card reveal">
+      <div class="s-card-num">01</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="7" width="30" height="22" rx="2"/><path d="M3 13h30"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/></svg>
+      <h3 class="s-card-name">Sites & Landing Pages</h3>
+      <p class="s-card-desc">Presença digital que converte. Rápidos, responsivos e otimizados para buscadores desde o primeiro commit.</p>
+      <div class="s-tags"><span class="tag">SEO</span><span class="tag">Performance</span><span class="tag">Responsivo</span></div>
+    </article>
+    <article class="s-card reveal rd1">
+      <div class="s-card-num">02</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="5" width="11" height="11" rx="1"/><rect x="20" y="5" width="11" height="11" rx="1"/><rect x="5" y="20" width="11" height="11" rx="1"/><rect x="20" y="20" width="11" height="11" rx="1"/></svg>
+      <h3 class="s-card-name">Sistemas Web</h3>
+      <p class="s-card-desc">Aplicações robustas com Angular e Spring Boot. Painéis, CRMs, portais e plataformas que escalam com o seu negócio.</p>
+      <div class="s-tags"><span class="tag">Angular</span><span class="tag">Spring Boot</span><span class="tag">REST API</span></div>
+    </article>
+    <article class="s-card reveal rd2">
+      <div class="s-card-num">03</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 18c0-6.075 4.925-11 11-11s11 4.925 11 11"/><path d="M18 7v4M7 18h4M29 18h-4M18 29v-4"/><circle cx="18" cy="18" r="4"/></svg>
+      <h3 class="s-card-name">Automações</h3>
+      <p class="s-card-desc">Elimine tarefas repetitivas. Integramos sistemas, automatizamos fluxos e conectamos ferramentas via n8n e APIs.</p>
+      <div class="s-tags"><span class="tag">n8n</span><span class="tag">Webhooks</span><span class="tag">Integrações</span></div>
+    </article>
+    <article class="s-card reveal">
+      <div class="s-card-num">04</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 4l13 7.5V25L18 32 5 25V11.5L18 4z"/><path d="M18 4v28M5 11.5l13 7.5 13-7.5"/></svg>
+      <h3 class="s-card-name">Micro SaaS</h3>
+      <p class="s-card-desc">Transformamos ideias em produtos digitais. Da validação ao deploy, com arquitetura que suporta crescimento real.</p>
+      <div class="s-tags"><span class="tag">MVP</span><span class="tag">SaaS</span><span class="tag">Escalável</span></div>
+    </article>
+    <article class="s-card reveal rd1">
+      <div class="s-card-num">05</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 18h26M18 5v26"/><path d="M9 9l18 18M27 9L9 27" stroke-width=".8" stroke-dasharray="2 3"/></svg>
+      <h3 class="s-card-name">Integrações</h3>
+      <p class="s-card-desc">Conectamos seu negócio ao ecossistema digital. Pagamentos, CRMs, WhatsApp, e-commerce — tudo integrado.</p>
+      <div class="s-tags"><span class="tag">API</span><span class="tag">Webhooks</span><span class="tag">Pagamentos</span></div>
+    </article>
+    <article class="s-card reveal rd2">
+      <div class="s-card-num">06</div>
+      <svg class="s-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M7 30V15l11-7 11 7v15"/><path d="M14 30v-8h8v8"/></svg>
+      <h3 class="s-card-name">Consultoria Tech</h3>
+      <p class="s-card-desc">Arquitetura, stack e decisões técnicas. Se você precisa de direção estratégica, estamos prontos para guiar.</p>
+      <div class="s-tags"><span class="tag">Arquitetura</span><span class="tag">Code Review</span><span class="tag">Estratégia</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="compromissos" aria-labelledby="cm-title">
+  <div class="s-head">
+    <div>
+      <div class="s-tag">Como operamos</div>
+      <h2 class="s-title" id="cm-title">Princípios que<br><em>guiam</em><br>cada projeto.</h2>
+    </div>
+    <p class="s-head-desc">Clareza antes de velocidade. Qualidade antes de volume. Cada decisão técnica reflete o negócio do cliente — não a conveniência do estúdio.</p>
+  </div>
+  <div class="commit-grid">
+    <div class="commit-card reveal" data-icon="◎">
+      <div class="commit-num">01</div>
+      <h3 class="commit-title">Escopo definido. Surpresa zero.</h3>
+      <p class="commit-desc">Proposta detalhada antes de qualquer código. Prazo, entregáveis e valor fixados por escrito. O projeto começa quando você aprovar.</p>
+    </div>
+    <div class="commit-card reveal rd1" data-icon="◎">
+      <div class="commit-num">02</div>
+      <h3 class="commit-title">Você fala com quem constrói.</h3>
+      <p class="commit-desc">Sem account manager, sem intermediário. Canal direto com o desenvolvedor durante todo o ciclo — do briefing ao deploy.</p>
+    </div>
+    <div class="commit-card reveal rd2" data-icon="◎">
+      <div class="commit-num">03</div>
+      <h3 class="commit-title">Dois modelos. Você escolhe.</h3>
+      <p class="commit-desc">Prefere pagar uma mensalidade e ter tudo resolvido? Ou quer a propriedade total do projeto com suporte avulso quando precisar? As duas opções existem.</p>
+    </div>
+    <div class="commit-card reveal" data-icon="◎">
+      <div class="commit-num">04</div>
+      <h3 class="commit-title">Deploy não é opcional.</h3>
+      <p class="commit-desc">Entregamos em produção. Configuramos ambiente, domínio, SSL e hospedagem. O projeto vai ao ar — não fica na sua máquina.</p>
+    </div>
+    <div class="commit-card reveal rd1" data-icon="◎">
+      <div class="commit-num">05</div>
+      <h3 class="commit-title">Performance é padrão, não extra.</h3>
+      <p class="commit-desc">Core Web Vitals, SEO técnico e acessibilidade fazem parte do desenvolvimento base. Não cobramos separado pelo que deveria ser óbvio.</p>
+    </div>
+    <div class="commit-card reveal rd2" data-icon="◎">
+      <div class="commit-num">06</div>
+      <h3 class="commit-title">Suporte quando você precisar.</h3>
+      <p class="commit-desc">Hospedagem e suporte técnico inclusos no plano mensal. No plano proprietário, atendimento avulso disponível sempre que necessário.</p>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-box reveal">
+      <div class="stat-num">2025</div>
+      <div class="stat-label">Fundado em</div>
+    </div>
+    <div class="stat-box reveal rd1">
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Retorno garantido</div>
+    </div>
+    <div class="stat-box reveal rd2">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Modelos de contratação</div>
+    </div>
+    <div class="stat-box reveal rd3">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Projetos entregues em produção</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="processo" aria-labelledby="pr-title">
+  <div class="s-head">
+    <div>
+      <div class="s-tag">Como trabalhamos</div>
+      <h2 class="s-title" id="pr-title">Processo claro,<br><em>resultado</em><br>previsível.</h2>
+    </div>
+    <p class="s-head-desc">Cada etapa tem entregável definido e sua aprovação antes de avançar. Sem surpresas, sem retrabalho.</p>
+  </div>
+  <div class="process-list">
+    <div class="p-step reveal">
+      <div class="p-step-num">01</div>
+      <div class="p-step-body">
+        <h3>Descoberta</h3>
+        <p>Reunião de briefing, análise de contexto e definição de objetivos reais. Entendemos o negócio antes de abrir o editor.</p>
+      </div>
+      <svg class="p-step-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="p-step reveal">
+      <div class="p-step-num">02</div>
+      <div class="p-step-body">
+        <h3>Proposta</h3>
+        <p>Documento detalhado com escopo, prazo e valor. Você aprova cada item antes de qualquer linha de código.</p>
+      </div>
+      <svg class="p-step-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="p-step reveal">
+      <div class="p-step-num">03</div>
+      <div class="p-step-body">
+        <h3>Execução</h3>
+        <p>Atualizações semanais, acesso ao ambiente de staging e canal direto durante todo o desenvolvimento.</p>
+      </div>
+      <svg class="p-step-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="p-step reveal">
+      <div class="p-step-num">04</div>
+      <div class="p-step-body">
+        <h3>Entrega & Suporte</h3>
+        <p>Publicamos, documentamos e ficamos 30 dias para garantir que tudo funciona como deve em produção.</p>
+      </div>
+      <svg class="p-step-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" aria-labelledby="st-title">
+  <div class="s-head">
+    <div>
+      <div class="s-tag">Tecnologia</div>
+      <h2 class="s-title" id="st-title">Stack moderno,<br><em>código</em><br>que dura.</h2>
+    </div>
+    <p class="s-head-desc">Usamos tecnologias consolidadas no mercado — não modismos. Seu projeto vai funcionar daqui a 5 anos.</p>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-item reveal">
+      <div class="stack-cat">Frontend</div>
+      <div class="stack-name">Angular 17+</div>
+      <div class="stack-sub">Standalone, Signals, SSR</div>
+    </div>
+    <div class="stack-item reveal rd1">
+      <div class="stack-cat">Backend</div>
+      <div class="stack-name">Java Spring Boot</div>
+      <div class="stack-sub">REST APIs, Microsserviços, JWT</div>
+    </div>
+    <div class="stack-item reveal rd2">
+      <div class="stack-cat">Banco de dados</div>
+      <div class="stack-name">PostgreSQL / MySQL</div>
+      <div class="stack-sub">Redis para cache</div>
+    </div>
+    <div class="stack-item reveal rd3">
+      <div class="stack-cat">Automação</div>
+      <div class="stack-name">n8n & Webhooks</div>
+      <div class="stack-sub">RabbitMQ, integrações REST</div>
+    </div>
+    <div class="stack-item reveal">
+      <div class="stack-cat">Deploy</div>
+      <div class="stack-name">Vercel / Railway</div>
+      <div class="stack-sub">Docker, CI/CD pipelines</div>
+    </div>
+    <div class="stack-item reveal rd1">
+      <div class="stack-cat">Sites estáticos</div>
+      <div class="stack-name">HTML / CSS / JS</div>
+      <div class="stack-sub">Performance máxima, SEO nativo</div>
+    </div>
+    <div class="stack-item reveal rd2">
+      <div class="stack-cat">Mensageria</div>
+      <div class="stack-name">RabbitMQ / WebSocket</div>
+      <div class="stack-sub">Eventos em tempo real</div>
+    </div>
+    <div class="stack-item reveal rd3">
+      <div class="stack-cat">Controle</div>
+      <div class="stack-name">Git + GitHub</div>
+      <div class="stack-sub">Versionamento, code review</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="planos" aria-labelledby="pl-title">
+  <div class="s-head">
+    <div>
+      <div class="s-tag">Modelos de contratação</div>
+      <h2 class="s-title" id="pl-title">Você escolhe<br><em>como quer</em><br>operar.</h2>
+    </div>
+    <p class="s-head-desc">Dois modelos pensados para realidades diferentes. Nenhum é melhor — depende do quanto de controle e responsabilidade você quer assumir.</p>
+  </div>
+
+  <!-- Model Toggle -->
+  <div class="model-toggle">
+    <button class="model-btn active" id="btn-mensal" onclick="switchModel('mensal')">
+      <div class="model-btn-tag">Modelo A — Mensal</div>
+      <div class="model-btn-title">Setup + Hospedagem & Suporte</div>
+      <p class="model-btn-desc">Você paga o setup uma vez e uma mensalidade fixa. Hospedagem e suporte técnico resolvidos por nós. Sem dor de cabeça técnica.</p>
+    </button>
+    <button class="model-btn" id="btn-prop" onclick="switchModel('prop')">
+      <div class="model-btn-tag">Modelo B — Proprietário</div>
+      <div class="model-btn-title">Compra total do projeto</div>
+      <p class="model-btn-desc">Você adquire o projeto completo e assume o controle. Suporte avulso disponível quando precisar. Autonomia total.</p>
+    </button>
+  </div>
+
+  <!-- Panel A: Mensal -->
+  <div class="pricing-panel pricing-grid active" id="panel-mensal" style="gap:1px;background:var(--border);">
+    <div class="p-card">
+      <div class="p-name">Site Básico</div>
+      <div class="p-model-tag">Modelo A — Mensal</div>
+      <div class="p-price">R$120 <span>/ mês</span></div>
+      <div class="p-sub">+ Setup a partir de R$400</div>
+      <ul class="p-feat">
+        <li>Landing page simples</li>
+        <li>Design responsivo</li>
+        <li>SEO on-page</li>
+        <li>Hospedagem incluída</li>
+        <li>Suporte técnico mensal</li>
+        <li>Formulário de contato</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20no%20Site%20Básico%20Mensal" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card featured">
+      <div class="p-name">Site Premium</div>
+      <div class="p-model-tag">Modelo A — Mensal</div>
+      <div class="p-price">R$200 <span>/ mês</span></div>
+      <div class="p-sub">+ Setup a partir de R$600</div>
+      <ul class="p-feat">
+        <li>Site ou LP premium</li>
+        <li>Design exclusivo e animado</li>
+        <li>SEO avançado + schema</li>
+        <li>Hospedagem incluída</li>
+        <li>Suporte técnico prioritário</li>
+        <li>Integrações (WhatsApp, forms)</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20no%20Site%20Premium%20Mensal" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Automação</div>
+      <div class="p-model-tag">Modelo A — Mensal</div>
+      <div class="p-price">R$150 <span>/ mês</span></div>
+      <div class="p-sub">+ Setup a partir de R$400</div>
+      <ul class="p-feat">
+        <li>Fluxo automatizado com n8n</li>
+        <li>Integrações ilimitadas</li>
+        <li>Webhooks e APIs</li>
+        <li>Hospedagem do servidor</li>
+        <li>Monitoramento mensal</li>
+        <li>Ajustes de fluxo inclusos</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Automação%20Mensal" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Micro SaaS</div>
+      <div class="p-model-tag">Modelo A — Mensal</div>
+      <div class="p-price">R$350 <span>/ mês</span></div>
+      <div class="p-sub">+ Setup a partir de R$1.500</div>
+      <ul class="p-feat">
+        <li>Aplicação web completa</li>
+        <li>Frontend + backend</li>
+        <li>Banco de dados gerenciado</li>
+        <li>Hospedagem e infraestrutura</li>
+        <li>Suporte técnico prioritário</li>
+        <li>Atualizações e melhorias</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Micro%20SaaS%20Mensal" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+  </div>
+
+  <!-- Panel B: Proprietário -->
+  <div class="pricing-panel pricing-grid" id="panel-prop" style="gap:1px;background:var(--border);">
+    <div class="p-card">
+      <div class="p-name">Site</div>
+      <div class="p-model-tag">Modelo B — Proprietário</div>
+      <div class="p-price">R$1.800 <span>+</span></div>
+      <div class="p-sub">Pagamento único · a partir de</div>
+      <ul class="p-feat">
+        <li>Site institucional completo</li>
+        <li>Design exclusivo</li>
+        <li>SEO on-page + schema</li>
+        <li>Deploy configurado</li>
+        <li>Documentação entregue</li>
+        <li>Suporte avulso disponível</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Site%20Proprietário" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card featured">
+      <div class="p-name">Site Premium</div>
+      <div class="p-model-tag">Modelo B — Proprietário</div>
+      <div class="p-price">R$3.200 <span>+</span></div>
+      <div class="p-sub">Pagamento único · a partir de</div>
+      <ul class="p-feat">
+        <li>Site ou LP de alto impacto</li>
+        <li>Design exclusivo e animado</li>
+        <li>SEO avançado + schema</li>
+        <li>Integrações completas</li>
+        <li>Deploy + documentação</li>
+        <li>Suporte avulso disponível</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Site%20Premium%20Proprietário" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Automação</div>
+      <div class="p-model-tag">Modelo B — Proprietário</div>
+      <div class="p-price">R$1.200 <span>+</span></div>
+      <div class="p-sub">Pagamento único · a partir de</div>
+      <ul class="p-feat">
+        <li>Mapeamento do processo</li>
+        <li>Implementação com n8n</li>
+        <li>Integrações ilimitadas</li>
+        <li>Testes e documentação</li>
+        <li>Treinamento da equipe</li>
+        <li>Suporte avulso disponível</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Automação%20Proprietária" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+    <div class="p-card">
+      <div class="p-name">Micro SaaS</div>
+      <div class="p-model-tag">Modelo B — Proprietário</div>
+      <div class="p-price">R$4.500 <span>+</span></div>
+      <div class="p-sub">Pagamento único · a partir de</div>
+      <ul class="p-feat">
+        <li>Aplicação web completa</li>
+        <li>Frontend Angular + API</li>
+        <li>Banco de dados + backend</li>
+        <li>Autenticação e permissões</li>
+        <li>Deploy + documentação</li>
+        <li>Suporte avulso disponível</li>
+      </ul>
+      <a href="https://wa.me/5518996269012?text=Olá,%20tenho%20interesse%20em%20Micro%20SaaS%20Proprietário" class="p-btn" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contato" aria-labelledby="cta-title">
+  <div class="cta-inner">
+    <h2 class="cta-title line-mask lm1" id="cta-title">
+      <span>Seu próximo</span>
+      <div class="line-mask lm2"><span>projeto começa</span></div>
+      <div class="line-mask lm3"><span><em>com uma</em></span></div>
+      <div class="line-mask lm4"><span>conversa.</span></div>
+    </h2>
+    <div class="cta-right reveal">
+      <p>Descreva o que você precisa e receba uma proposta em até 48 horas. Sem compromisso, sem enrolação — só clareza sobre o que pode ser construído.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/5518996269012?text=Olá,%20gostaria%20de%20conversar%20sobre%20um%20projeto" class="cta-wa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Conversar no WhatsApp
+        </a>
+        <a href="mailto:contato@devdogstudio.com.br" class="cta-mail">
+          contato@devdogstudio.com.br
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="f-brand">© 2025 Dev Dog Studio</div>
+  <ul class="f-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="f-right">devdogstudio.com.br</div>
+</footer>
+
+<script>
+  // Cursor
+  const cur = document.getElementById('cur');
+  const curR = document.getElementById('cur-r');
+  let mx=0,my=0,rx=0,ry=0;
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.addEventListener('mousemove',e=>{
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    });
+    (function anim(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; curR.style.left=rx+'px'; curR.style.top=ry+'px'; requestAnimationFrame(anim); })();
+  }
+
+  // Nav scroll
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',scrollY>50);
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // Mobile menu
+  const burger=document.getElementById('burger');
+  const mobMenu=document.getElementById('mob-menu');
+  const mobLinks=document.querySelectorAll('.mob-link,.nav-mobile-cta');
+  const openMenu=()=>{ burger.classList.add('open'); mobMenu.classList.add('open'); document.body.style.overflow='hidden'; burger.setAttribute('aria-expanded','true'); };
+  const closeMenu=()=>{ burger.classList.remove('open'); mobMenu.classList.remove('open'); document.body.style.overflow=''; burger.setAttribute('aria-expanded','false'); };
+  burger.addEventListener('click',()=>burger.classList.contains('open')?closeMenu():openMenu());
+  mobLinks.forEach(l=>l.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+
+  // Reveal on scroll
+  const reveals=document.querySelectorAll('.reveal');
+  const lines=document.querySelectorAll('.line-mask');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.1});
+  const lio=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); lio.unobserve(e.target); } });
+  },{threshold:.25});
+  reveals.forEach(el=>io.observe(el));
+  lines.forEach(el=>lio.observe(el));
+
+  // Hero animate on load
+  setTimeout(()=>{ document.querySelectorAll('.hero .line-mask').forEach(el=>el.classList.add('in')); },150);
+
+  // Pricing model toggle
+  function switchModel(model) {
+    const btnMensal  = document.getElementById('btn-mensal');
+    const btnProp    = document.getElementById('btn-prop');
+    const panelMensal = document.getElementById('panel-mensal');
+    const panelProp   = document.getElementById('panel-prop');
+
+    if (model === 'mensal') {
+      btnMensal.classList.add('active');
+      btnProp.classList.remove('active');
+      panelMensal.classList.add('active');
+      panelProp.classList.remove('active');
+    } else {
+      btnProp.classList.add('active');
+      btnMensal.classList.remove('active');
+      panelProp.classList.add('active');
+      panelMensal.classList.remove('active');
+    }
+
+    // re-run reveal for newly visible cards
+    document.querySelectorAll('.pricing-panel.active .p-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        el.style.transition = 'opacity .5s ease, transform .5s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, i * 60);
+    });
+  }
+
+  // init card animation on load
+  document.querySelectorAll('#panel-mensal .p-card').forEach((el, i) => {
+    el.style.transition = 'background .3s';
+  });
+</script>
+</body>
+</html>
